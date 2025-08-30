@@ -12,7 +12,7 @@ const ImprintPage = () => {
     <div className="min-h-screen bg-acencia">
       <Header />
       
-      <div className="pt-28 bg-acencia">
+      <div className="pt-8 bg-acencia">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-acencia via-acencia-light to-acencia py-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
