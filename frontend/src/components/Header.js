@@ -21,7 +21,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <header className={`relative w-full z-50 transition-all duration-500 ${
       isScrolled 
         ? 'bg-acencia/95 backdrop-blur-lg border-b border-acencia-light/50 shadow-lg' 
         : 'bg-acencia/90 backdrop-blur-sm'
