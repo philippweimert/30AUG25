@@ -1,300 +1,314 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Users, Shield, TrendingUp, CheckCircle, Euro, Gift, Banknote, Lock, Clock, ArrowUp, RefreshCw, PlusCircle, Heart, User } from "lucide-react";
+import { Button } from "./ui/button";
+import { Shield, Users, TrendingUp, CheckCircle, ArrowRight, Award, DollarSign, Calculator, PieChart, Target, Heart, Clock } from "lucide-react";
 
 const DieBavPageY = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [activeTab, setActiveTab] = useState('overview');
 
-  const sections = [
+  const benefits = [
     {
-      id: "vorteile",
-      title: "Vorteile",
-      icon: <TrendingUp className="w-8 h-8" />,
-      color: "from-green-500 to-green-600",
-      items: [
-        {
-          title: "Steuer- und sozialabgabenfreie Beiträge aus dem Bruttogehalt",
-          description: "Reduzierung der Steuerlast durch Entgeltumwandlung – mehr Netto vom Brutto",
-          icon: <Euro className="w-6 h-6" />
-        },
-        {
-          title: "15% Arbeitgeberförderung plus zusätzliche Leistungen möglich",
-          description: "Seit 2022 gesetzlich garantierte 15% Förderung der Entgeltumwandlung - zusätzliche Arbeitgeberzuschüsse oder -beiträge erhöhen Ihre Altersvorsorge noch weiter",
-          icon: <Gift className="w-6 h-6" />
-        },
-        {
-          title: "Lebenslange Rentenzahlung oder Kapitalauszahlung",
-          description: "Flexible Auszahlungsoptionen je nach persönlichen Bedürfnissen und Lebensplanung",
-          icon: <Banknote className="w-6 h-6" />
-        },
-        {
-          title: "Schutz vor Pfändung und Hartz-IV-Anrechnung",
-          description: "Ihre Altersvorsorge ist vor Zugriffen geschützt und wird nicht auf Sozialleistungen angerechnet",
-          icon: <Shield className="w-6 h-6" />
-        }
-      ]
+      icon: <DollarSign className="w-6 h-6" />,
+      title: "Steuervorteile",
+      description: "Reduzierung der Steuerlast durch Entgeltumwandlung - mehr Netto vom Brutto"
     },
     {
-      id: "chancen", 
-      title: "Chancen",
-      icon: <ArrowUp className="w-8 h-8" />,
-      color: "from-blue-500 to-blue-600",
-      items: [
-        {
-          title: "Früher Einstieg = höhere Rente durch Zinseszinseffekt",
-          description: "Je früher Sie beginnen, desto mehr profitieren Sie von der Wirkung des Zinseszinses",
-          icon: <Clock className="w-6 h-6" />
-        },
-        {
-          title: "Ergänzung zur gesetzlichen Rente", 
-          description: "Schließen Sie die Rentenlücke und sichern Sie Ihren gewohnten Lebensstandard im Alter",
-          icon: <PlusCircle className="w-6 h-6" />
-        },
-        {
-          title: "Flexibilität bei Anbieterwechsel oder Arbeitgeberwechsel",
-          description: "Ihre Ansprüche bleiben erhalten und können mitgenommen oder übertragen werden",
-          icon: <RefreshCw className="w-6 h-6" />
-        },
-        {
-          title: "Möglichkeit zur privaten Aufstockung",
-          description: "Kombination mit privaten Beiträgen für eine noch bessere Altersvorsorge möglich",
-          icon: <ArrowUp className="w-6 h-6" />
-        }
-      ]
+      icon: <Shield className="w-6 h-6" />,
+      title: "Zusätzliche Rente",
+      description: "Aufbau einer zusätzlichen Altersvorsorge neben der gesetzlichen Rente"
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Arbeitgeberzuschuss",
+      description: "Seit 2019 müssen Arbeitgeber 15% Zuschuss bei gesparten Sozialversicherungsbeiträgen leisten"
+    }
+  ];
+
+  const taxSavings = [
+    {
+      title: "Sofortige Ersparnis",
+      description: "Weniger Steuern und Sozialabgaben bereits heute",
+      icon: <Calculator className="w-8 h-8" />,
+      color: "from-green-500 to-green-600"
+    },
+    {
+      title: "Langfristig profitieren", 
+      description: "Aufbau einer zusätzlichen Rente für das Alter",
+      icon: <PieChart className="w-8 h-8" />,
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      title: "Flexibilität",
+      description: "Anpassung der Beiträge je nach Lebenssituation",
+      icon: <Target className="w-8 h-8" />,
+      color: "from-purple-500 to-purple-600"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-acencia via-acencia to-acencia-light">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
-      {/* Doubled spacing from header */}
-      <main className="pt-56">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Hero Section */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-6 py-3 bg-acencia-orange rounded-full text-white text-sm font-medium mb-8">
-                <User className="w-5 h-5 mr-2" />
-                Für Arbeitnehmer
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8">
-                <span className="text-acencia-orange">Sicherheit</span> für später –<br />
-                heute schon profitieren
+      <main className="pt-8">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-acencia via-acencia to-acencia-light py-20 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.05]">
+            <svg className="absolute top-20 right-0 w-96 h-96" viewBox="0 0 400 400">
+              <polygon points="200,50 350,150 350,250 200,350 50,250 50,150" 
+                       fill="none" stroke="white" strokeWidth="2"/>
+            </svg>
+            <svg className="absolute bottom-20 left-0 w-80 h-80" viewBox="0 0 400 400">
+              <polygon points="200,30 320,120 320,200 200,290 80,200 80,120" 
+                       fill="none" stroke="#f97316" strokeWidth="1"/>
+            </svg>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                bAV für <span className="text-orange-500">Arbeitnehmer</span>
               </h1>
-              <p className="text-lg text-slate-200 leading-relaxed max-w-4xl mx-auto">
-                Was bleibt am Ende des Berufslebens?
+              <p className="text-xl text-slate-200 mb-8 max-w-3xl mx-auto">
+                Ihre betriebliche Altersvorsorge - steuerliche Vorteile nutzen und zusätzliche Rente aufbauen
               </p>
-            </div>
-
-            {/* Emotionale Einleitung */}
-            <div className="bg-gradient-to-r from-acencia-orange/20 to-orange-600/20 backdrop-blur-sm rounded-2xl p-8 border border-orange-400/30 mb-16">
-              <div className="flex items-center mb-6">
-                <Heart className="w-8 h-8 text-acencia-orange mr-3" />
-                <h2 className="text-2xl font-semibold text-white">
-                  Was bleibt am Ende des Berufslebens?
-                </h2>
-              </div>
-              <p className="text-slate-200 leading-relaxed mb-4 text-lg">
-                Nach einem langen Arbeitsleben haben Sie sich eine sorgenfreie Rente verdient. Doch die gesetzliche Rente allein 
-                reicht oft nicht aus, um den gewohnten Lebensstandard zu halten.
+              <p className="text-sm text-slate-400 mb-8 max-w-2xl mx-auto">
+                Informationen aus dem Geschäftsbetrieb des Versicherungsmaklers gemäß §93 HGB, keine Rechtsberatung, keine Steuerberatung
               </p>
-              <p className="text-slate-200 leading-relaxed text-lg">
-                <strong className="text-white">Hier kommt die betriebliche Altersvorsorge ins Spiel:</strong> Eine kluge Ergänzung, 
-                die schon heute Ihre Steuerlast reduziert und später für finanzielle Sicherheit sorgt.
-              </p>
-            </div>
-
-            {/* Was ist bAV */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-16">
-              <div className="flex items-center mb-6">
-                <Users className="w-8 h-8 text-acencia-orange mr-3" />
-                <h2 className="text-2xl font-semibold text-white">
-                  Was ist betriebliche Altersvorsorge und wie funktioniert sie?
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                <div>
-                  <p className="text-slate-200 leading-relaxed mb-4">
-                    Bei der betrieblichen Altersvorsorge (bAV) wird ein Teil Ihres Bruttogehalts für die Altersvorsorge verwendet. 
-                    Dieser Betrag wird <strong className="text-white">vor</strong> der Berechnung von Steuern und Sozialabgaben abgezogen.
-                  </p>
-                  <p className="text-slate-200 leading-relaxed mb-4">
-                    <strong className="text-acencia-orange">Das Ergebnis:</strong> Sie zahlen weniger Steuern und Sozialabgaben, 
-                    während gleichzeitig Ihre Altersvorsorge wächst.
-                  </p>
-                </div>
-                <div className="bg-acencia-light/30 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-white mb-4">Ihr Recht auf bAV</h3>
-                  <p className="text-slate-200 text-sm leading-relaxed">
-                    Seit 2002 hat <strong className="text-white">jeder Arbeitnehmer</strong> den gesetzlichen Anspruch auf 
-                    betriebliche Altersvorsorge durch Entgeltumwandlung. Ihr Arbeitgeber ist verpflichtet, Ihnen diese 
-                    Möglichkeit anzubieten.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sections */}
-            <div className="space-y-16">
-              {sections.map((section, sectionIndex) => (
-                <div key={section.id} className="relative">
-                  {/* Section Header */}
-                  <div className="flex items-center mb-8">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${section.color} rounded-2xl flex items-center justify-center text-white mr-4 shadow-lg`}>
-                      {section.icon}
-                    </div>
-                    <div>
-                      <h2 className="text-3xl font-bold text-white mb-2">
-                        {sectionIndex + 1}. {section.title}
-                      </h2>
-                    </div>
-                  </div>
-
-                  {/* Section Items */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {section.items.map((item, itemIndex) => (
-                      <div 
-                        key={itemIndex}
-                        className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 group"
-                      >
-                        <div className="flex items-start space-x-4">
-                          <div className={`flex-shrink-0 w-12 h-12 bg-gradient-to-r ${section.color} rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
-                            {item.icon}
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-acencia-orange transition-colors duration-300">
-                              {item.title}
-                            </h3>
-                            <p className="text-slate-200 leading-relaxed text-sm">
-                              {item.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Beispielrechnung */}
-            <div className="mt-16 bg-gradient-to-r from-green-600/20 to-blue-600/20 backdrop-blur-sm rounded-2xl p-8 border border-green-400/30">
-              <h2 className="text-2xl font-bold text-white mb-8 text-center">
-                💡 Berechnungsbeispiel: bAV mit 15% Arbeitgeberförderung
-              </h2>
-              
-              {/* Hauptberechnung */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                <div className="bg-white/10 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-white mb-4 text-center">Monatliche Beiträge</h3>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center border-b border-white/20 pb-2">
-                      <span className="text-slate-200">Gesamtbeitrag bAV:</span>
-                      <span className="text-2xl font-bold text-acencia-orange">100 €</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-white/20 pb-2">
-                      <span className="text-slate-200">Arbeitgeberzuschuss (15%):</span>
-                      <span className="text-xl font-bold text-green-400">+ 15 €</span>
-                    </div>
-                    <div className="flex justify-between items-center border-b border-white/20 pb-2">
-                      <span className="text-slate-200">Ihr Eigenbeitrag:</span>
-                      <span className="text-xl font-bold text-blue-400">85 €</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-slate-200">Steuer-/Abgabenersparnis:</span>
-                      <span className="text-xl font-bold text-green-400">ca. 34 €</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white/10 rounded-xl p-6">
-                  <h3 className="text-lg font-bold text-white mb-4 text-center">Ihre Nettobelastung</h3>
-                  <div className="space-y-4">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-acencia-orange mb-2">nur 51 €</div>
-                      <div className="text-white font-semibold">weniger Netto pro Monat</div>
-                    </div>
-                    <div className="bg-acencia-light/30 rounded-lg p-4 text-center">
-                      <div className="text-sm text-slate-200 mb-2">Aufgrund der Steuerersparnis zahlen Sie effektiv:</div>
-                      <div className="text-lg font-bold text-green-400">85 € - 34 € = 51 € Nettobelastung</div>
-                    </div>
-                    <div className="text-xs text-slate-300 text-center">
-                      *Bei einem Grenzsteuersatz von ca. 40% (Steuer + Sozialabgaben)
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Langfristige Auswirkungen */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white/10 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2">100 €</div>
-                  <div className="text-white font-semibold mb-2">Gesamtbeitrag</div>
-                  <div className="text-slate-300 text-sm">monatlich in Ihre bAV</div>
-                  <div className="text-xs text-slate-400 mt-2">
-                    (85 € Eigenbeitrag + 15 € AG-Zuschuss)
-                  </div>
-                </div>
-                
-                <div className="bg-white/10 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2">612 €</div>
-                  <div className="text-white font-semibold mb-2">Jährliche Ersparnis</div>
-                  <div className="text-slate-300 text-sm">durch AG-Zuschuss + Steuervorteile</div>
-                  <div className="text-xs text-slate-400 mt-2">
-                    (180 € AG-Zuschuss + 408 € Steuerersparnis)
-                  </div>
-                </div>
-                
-                <div className="bg-white/10 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-bold text-acencia-orange mb-2">≈ 31.000 €</div>
-                  <div className="text-white font-semibold mb-2">Nach 20 Jahren</div>
-                  <div className="text-slate-300 text-sm">Kapital bei 2% Zinssatz</div>
-                  <div className="text-xs text-slate-400 mt-2">
-                    Ihre Nettobelastung: nur ≈ 12.240 €
-                  </div>
-                </div>
-              </div>
-
-              {/* Aufklärung */}
-              <div className="mt-6 bg-acencia-orange/20 rounded-xl p-4 border border-orange-400/30">
-                <div className="text-center">
-                  <div className="text-white font-semibold mb-2">🎯 Das Beste für Sie:</div>
-                  <div className="text-slate-200 text-sm">
-                    Sie bekommen eine Altersvorsorge von 31.000 €, zahlen aber netto nur 12.240 € selbst! 
-                    Der Rest kommt vom Arbeitgeberzuschuss und Ihren Steuervorteilen.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="mt-16 bg-gradient-to-r from-acencia-orange to-orange-600 rounded-2xl p-8 text-center">
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Starten Sie noch heute in Ihre sichere Zukunft!
-              </h2>
-              <p className="text-white/90 mb-6 leading-relaxed">
-                Nutzen Sie Ihr Recht auf betriebliche Altersvorsorge und profitieren Sie von steuerlichen Vorteilen. 
-                Sprechen Sie mit Ihrem Arbeitgeber oder lassen Sie sich beraten.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-acencia-orange px-8 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg">
-                  Beratung anfordern
-                </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300">
-                  Arbeitgeber informieren
-                </button>
-              </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Navigation Tabs */}
+        <section className="bg-acencia-light py-8 sticky top-0 z-40">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { key: 'overview', label: 'Überblick' },
+                { key: 'benefits', label: 'Ihre Vorteile' },
+                { key: 'taxes', label: 'Steuervorteile' }
+              ].map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    activeTab === tab.key
+                      ? 'bg-orange-500 text-white shadow-lg'
+                      : 'bg-white/10 text-slate-200 hover:bg-white/20'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Content Sections */}
+        <section className="bg-gradient-to-b from-acencia-light to-acencia-blue py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Overview Tab */}
+            {activeTab === 'overview' && (
+              <div className="space-y-12">
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-white mb-6">
+                    Was ist betriebliche Altersvorsorge?
+                  </h2>
+                  <p className="text-lg text-slate-200 max-w-4xl mx-auto leading-relaxed">
+                    Die betriebliche Altersvorsorge (bAV) ist eine zusätzliche Altersvorsorge, die über Ihren Arbeitgeber organisiert wird. 
+                    Sie haben seit 2002 einen gesetzlichen Anspruch darauf und profitieren von attraktiven Steuervorteilen.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {benefits.map((benefit, index) => (
+                    <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                      <div className="text-orange-400 mb-4">
+                        {benefit.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-white mb-3">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-slate-200">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Benefits Tab */}
+            {activeTab === 'benefits' && (
+              <div className="space-y-12">
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-white mb-6">
+                    Ihre konkreten Vorteile
+                  </h2>
+                  <p className="text-lg text-slate-200 max-w-4xl mx-auto leading-relaxed">
+                    Die betriebliche Altersvorsorge bietet Ihnen viele Vorteile - sowohl heute als auch im Alter.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[
+                    {
+                      icon: <DollarSign className="w-8 h-8" />,
+                      title: "Bis zu 584€ jährlich sparen",
+                      description: "Maximale Steuer- und Sozialversicherungsersparnis durch optimale Entgeltumwandlung",
+                      color: "from-green-500 to-green-600"
+                    },
+                    {
+                      icon: <Shield className="w-8 h-8" />,
+                      title: "Sicherheit im Alter",
+                      description: "Zusätzliche Rente ergänzt die gesetzliche Rente für finanzielle Sicherheit",
+                      color: "from-blue-500 to-blue-600"
+                    },
+                    {
+                      icon: <Heart className="w-8 h-8" />,
+                      title: "Arbeitgeberzuschuss",
+                      description: "15% Zuschuss vom Arbeitgeber bei gesparten Sozialversicherungsbeiträgen",
+                      color: "from-purple-500 to-purple-600"
+                    },
+                    {
+                      icon: <Clock className="w-8 h-8" />,
+                      title: "Sofort profitieren",
+                      description: "Bereits heute weniger Steuern und Sozialabgaben zahlen",
+                      color: "from-orange-500 to-orange-600"
+                    },
+                    {
+                      icon: <Target className="w-8 h-8" />,
+                      title: "Flexibilität",
+                      description: "Anpassung der Beiträge je nach Lebenssituation und Gehaltsentwicklung",
+                      color: "from-red-500 to-red-600"
+                    },
+                    {
+                      icon: <Award className="w-8 h-8" />,
+                      title: "Staatliche Förderung",
+                      description: "Profitieren Sie von der steuerlichen Förderung der Bundesregierung",
+                      color: "from-teal-500 to-teal-600"
+                    }
+                  ].map((benefit, index) => (
+                    <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
+                      <div className={`w-16 h-16 bg-gradient-to-r ${benefit.color} rounded-xl flex items-center justify-center mb-4 text-white mx-auto`}>
+                        {benefit.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3 text-center">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-slate-200 text-center text-sm leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Tax Savings Tab */}
+            {activeTab === 'taxes' && (
+              <div className="space-y-12">
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-white mb-6">
+                    So funktionieren die Steuervorteile
+                  </h2>
+                  <p className="text-lg text-slate-200 max-w-4xl mx-auto leading-relaxed">
+                    Bei der Entgeltumwandlung wird ein Teil Ihres Bruttogehalts für die Altersvorsorge verwendet. 
+                    Dadurch zahlen Sie weniger Steuern und Sozialversicherungsbeiträge.
+                  </p>
+                </div>
+
+                <div className="bg-gradient-to-br from-orange-600/20 to-orange-700/20 rounded-2xl p-8 border border-orange-500/30 mb-12">
+                  <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                    Beispielrechnung für einen Angestellten
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                      <h4 className="text-lg font-semibold text-white mb-4">Ohne bAV</h4>
+                      <div className="space-y-2 text-slate-200">
+                        <div className="flex justify-between">
+                          <span>Bruttogehalt:</span>
+                          <span>3.000€</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Steuern & SV-Beiträge:</span>
+                          <span>-1.080€</span>
+                        </div>
+                        <div className="border-t border-white/20 pt-2 flex justify-between font-semibold text-white">
+                          <span>Netto:</span>
+                          <span>1.920€</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+                      <h4 className="text-lg font-semibold text-white mb-4">Mit bAV (100€ Entgeltumwandlung)</h4>
+                      <div className="space-y-2 text-slate-200">
+                        <div className="flex justify-between">
+                          <span>Bruttogehalt:</span>
+                          <span>2.900€</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Steuern & SV-Beiträge:</span>
+                          <span>-1.044€</span>
+                        </div>
+                        <div className="flex justify-between text-green-300">
+                          <span>+ Arbeitgeberzuschuss:</span>
+                          <span>+15€</span>
+                        </div>
+                        <div className="border-t border-white/20 pt-2 flex justify-between font-semibold text-white">
+                          <span>Netto:</span>
+                          <span>1.871€</span>
+                        </div>
+                        <div className="text-green-300 text-sm text-center mt-2">
+                          Effektive Kosten für 100€ bAV: nur 49€
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {taxSavings.map((saving, index) => (
+                    <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 text-center">
+                      <div className={`w-16 h-16 bg-gradient-to-r ${saving.color} rounded-xl flex items-center justify-center mb-4 text-white mx-auto`}>
+                        {saving.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3">
+                        {saving.title}
+                      </h3>
+                      <p className="text-slate-200 text-sm leading-relaxed">
+                        {saving.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* CTA Section - shown on all tabs */}
+            <div className="mt-16 text-center bg-gradient-to-br from-slate-700 to-slate-600 rounded-2xl p-8">
+              <h2 className="text-2xl font-bold text-white mb-4">
+                Starten Sie Ihre betriebliche Altersvorsorge
+              </h2>
+              <p className="text-slate-200 mb-6 max-w-2xl mx-auto">
+                Nutzen Sie Ihr Recht auf betriebliche Altersvorsorge und profitieren Sie von den Steuervorteilen. 
+                Sprechen Sie mit Ihrem Arbeitgeber oder kontaktieren Sie uns direkt.
+              </p>
+              <Button 
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-400 hover:scale-105 shadow-lg"
+                onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+              >
+                Jetzt informieren
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <Footer />
       </main>
-      
-      <Footer />
     </div>
   );
 };

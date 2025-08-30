@@ -1,85 +1,84 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Heart, Shield, Users } from "lucide-react";
+import { Shield, Users, Heart, Clock, CheckCircle, ArrowRight, TrendingUp, Award, Star } from "lucide-react";
 
 const BkvPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const benefits = [
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Erweiterte Gesundheitsleistungen",
+      description: "Zusätzliche medizinische Leistungen über die gesetzliche Krankenversicherung hinaus"
+    },
+    {
+      icon: <Shield className="w-6 h-6" />,
+      title: "Mitarbeitervorsorge",
+      description: "Attraktiver Mitarbeiterbenefit zur Steigerung der Zufriedenheit und Bindung"
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: "Schnelle Versorgung",
+      description: "Verkürzte Wartezeiten und privilegierter Zugang zu Fachärzten"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-acencia via-acencia to-acencia-light">
+    <div className="min-h-screen bg-acencia">
       <Header />
-      
-      {/* Doubled spacing from header */}
-      <main className="pt-56">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Hero Section */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-6 py-3 bg-acencia-orange rounded-full text-white text-sm font-medium mb-8">
-                <Heart className="w-5 h-5 mr-2" />
-                Betriebliche Krankenversicherung
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8">
-                <span className="text-acencia-orange">bKV</span> - Betriebliche Krankenversicherung
+      <main className="pt-8">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-acencia via-acencia to-acencia-light py-20 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.05]">
+            <svg className="absolute top-20 right-0 w-96 h-96" viewBox="0 0 400 400">
+              <polygon points="200,50 350,150 350,250 200,350 50,250 50,150" 
+                       fill="none" stroke="white" strokeWidth="2"/>
+            </svg>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                die <span className="text-orange-500">bKV</span>
               </h1>
-              <p className="text-lg text-slate-200 leading-relaxed max-w-4xl mx-auto">
-                Gesundheitsvorsorge als Mitarbeiterbenefit - Attraktive Zusatzleistungen für Ihre Belegschaft
+              <p className="text-xl text-slate-200 mb-8 max-w-3xl mx-auto">
+                Betriebliche Krankenversicherung - erweiterte Gesundheitsvorsorge als wertvoller Mitarbeiterbenefit
               </p>
-            </div>
-
-            {/* Content Placeholder */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 mb-16 text-center">
-              <div className="flex items-center justify-center mb-6">
-                <Shield className="w-12 h-12 text-acencia-orange mr-4" />
-                <h2 className="text-2xl font-semibold text-white">
-                  Inhalte folgen in Kürze
-                </h2>
-              </div>
-              <p className="text-slate-200 leading-relaxed mb-6">
-                Diese Seite wird mit umfassenden Informationen zur betrieblichen Krankenversicherung gefüllt.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white/5 rounded-xl p-4">
-                  <h3 className="text-white font-semibold mb-2">Für Arbeitgeber</h3>
-                  <p className="text-slate-300 text-sm">Vorteile und Möglichkeiten der bKV</p>
-                </div>
-                <div className="bg-white/5 rounded-xl p-4">
-                  <h3 className="text-white font-semibold mb-2">Für Arbeitnehmer</h3>
-                  <p className="text-slate-300 text-sm">Leistungen und Benefits</p>
-                </div>
-                <div className="bg-white/5 rounded-xl p-4">
-                  <h3 className="text-white font-semibold mb-2">Beratung</h3>
-                  <p className="text-slate-300 text-sm">Individuelle Lösungen</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="bg-gradient-to-r from-acencia-orange to-orange-600 rounded-2xl p-8 text-center">
-              <h2 className="text-2xl font-bold text-white mb-4">
-                Interessiert an betrieblicher Krankenversicherung?
-              </h2>
-              <p className="text-white/90 mb-6 leading-relaxed">
-                Kontaktieren Sie uns für weitere Informationen zur bKV und wie sie Ihr Unternehmen unterstützen kann.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-acencia-orange px-8 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg">
-                  Beratung anfordern
-                </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300">
-                  Mehr erfahren
-                </button>
-              </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Benefits Section */}
+        <section className="bg-gradient-to-b from-acencia-light to-acencia-blue py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Vorteile der betrieblichen Krankenversicherung
+              </h2>
+              <p className="text-lg text-slate-200 max-w-3xl mx-auto">
+                Die bKV ergänzt die gesetzliche Krankenversicherung und bietet erweiterte Leistungen
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                  <div className="text-orange-400 mb-4">
+                    {benefit.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-slate-200">
+                    {benefit.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Footer />
       </main>
-      
-      <Footer />
     </div>
   );
 };
