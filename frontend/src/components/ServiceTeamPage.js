@@ -1,176 +1,119 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Users, Crown, User, Mail, Phone, Linkedin } from "lucide-react";
+import { Button } from "./ui/button";
+import { User, Mail, Phone, Award, Users, Clock, Star, ArrowRight } from "lucide-react";
 
 const ServiceTeamPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const geschäftsführer = {
-    id: 1,
-    name: "Geschäftsführer",
-    position: "Geschäftsführung",
-    isGeschäftsführer: true,
-    placeholder: true
-  };
-
-  const angestellte = Array.from({ length: 14 }, (_, index) => ({
-    id: index + 2,
-    name: `Mitarbeiter ${index + 1}`,
-    position: "Position wird bekannt gegeben",
-    isGeschäftsführer: false,
-    placeholder: true
-  }));
-
-  const allMembers = [geschäftsführer, ...angestellte];
+  const teamMembers = [
+    {
+      name: "Uwe Weimert",
+      position: "Geschäftsführer",
+      description: "Über 30 Jahre Expertise in der betrieblichen Altersvorsorge und Geschäftsführung",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      specializations: ["bAV-Strategien", "Unternehmensberatung", "Compliance"]
+    },
+    {
+      name: "Sarah Mueller",
+      position: "Senior Beraterin bAV",
+      description: "Spezialisiert auf digitale bAV-Lösungen und Prozessoptimierung",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b900?w=300&h=300&fit=crop&crop=face",
+      specializations: ["Digitalisierung", "Prozessoptimierung", "Mittelstand"]
+    },
+    {
+      name: "Dr. Thomas Weber",
+      position: "Rechtsexperte",
+      description: "Jurist mit Fokus auf Arbeitsrecht und betriebliche Altersvorsorge",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      specializations: ["Arbeitsrecht", "Compliance", "Vertragsgestaltung"]
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-acencia via-acencia to-acencia-light">
+    <div className="min-h-screen bg-acencia">
       <Header />
       
-      {/* Doubled spacing from header */}
-      <main className="pt-56">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            
-            {/* Hero Section */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center px-6 py-3 bg-acencia-orange rounded-full text-white text-sm font-medium mb-8">
-                <Users className="w-5 h-5 mr-2" />
-                Unser Team
-              </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8">
-                Service-<span className="text-acencia-orange">Team</span>
+      <main className="pt-8">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-acencia via-acencia to-acencia py-20 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.05]">
+            <svg className="absolute top-20 right-0 w-96 h-96" viewBox="0 0 400 400">
+              <polygon points="200,50 350,150 350,250 200,350 50,250 50,150" 
+                       fill="none" stroke="white" strokeWidth="2"/>
+            </svg>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+                Unser <span className="text-orange-500">Service-Team</span>
               </h1>
-              <p className="text-lg text-slate-200 leading-relaxed max-w-4xl mx-auto">
-                Lernen Sie unser kompetentes Team kennen, das Sie bei allen Fragen zur betrieblichen Altersvorsorge unterstützt
+              <p className="text-xl text-slate-200 mb-8 max-w-3xl mx-auto">
+                Lernen Sie die Experten kennen, die Ihnen bei der betrieblichen Altersvorsorge zur Seite stehen
               </p>
             </div>
+          </div>
+        </section>
 
-            {/* Geschäftsführer Sektion */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-white text-center mb-8 flex items-center justify-center">
-                <Crown className="w-6 h-6 text-acencia-orange mr-2" />
-                Geschäftsführung
-              </h2>
-              
-              <div className="flex justify-center">
-                <div className="group">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-xl w-80">
-                    
-                    {/* Geschäftsführer Avatar */}
-                    <div className="relative mb-6">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-acencia-orange to-orange-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <Crown className="w-16 h-16 text-white" />
-                      </div>
-                      <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                        <Crown className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-acencia-orange transition-colors duration-300">
-                        {geschäftsführer.name}
-                      </h3>
-                      <p className="text-acencia-orange font-semibold mb-4">
-                        {geschäftsführer.position}
-                      </p>
-                      
-                      {/* Platzhalter Kontakt-Info */}
-                      <div className="space-y-2 text-slate-300 text-sm">
-                        <div className="flex items-center justify-center space-x-2">
-                          <Mail className="w-4 h-4" />
-                          <span>email@acencia.de</span>
-                        </div>
-                        <div className="flex items-center justify-center space-x-2">
-                          <Phone className="w-4 h-4" />
-                          <span>+49 (0) XXX XXXXXXX</span>
-                        </div>
-                        <div className="flex items-center justify-center space-x-2">
-                          <Linkedin className="w-4 h-4" />
-                          <span>LinkedIn Profil</span>
-                        </div>
-                      </div>
+        {/* Team Section */}
+        <section className="bg-gradient-to-b from-acencia via-acencia-light to-acencia-blue py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 text-center">
+                  <div className="mb-6">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-orange-400"
+                    />
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-orange-400 font-medium mb-3">
+                      {member.position}
+                    </p>
+                    <p className="text-slate-200 text-sm leading-relaxed mb-4">
+                      {member.description}
+                    </p>
+                  </div>
+                  
+                  <div className="border-t border-white/20 pt-4">
+                    <h4 className="text-white font-semibold mb-2 text-sm">Spezialisierungen:</h4>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {member.specializations.map((spec, specIndex) => (
+                        <span key={specIndex} className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-xs font-medium">
+                          {spec}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
 
-            {/* Angestellte Team Sektion */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-white text-center mb-12 flex items-center justify-center">
-                <Users className="w-6 h-6 text-acencia-orange mr-2" />
-                Unser Service-Team
-              </h2>
-              
-              {/* Team Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {angestellte.map((member, index) => (
-                  <div key={member.id} className="group">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-xl h-full">
-                      
-                      {/* Mitarbeiter Avatar */}
-                      <div className="relative mb-4">
-                        <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                          <User className="w-10 h-10 text-white" />
-                        </div>
-                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                          <span className="text-white text-xs font-bold">{index + 1}</span>
-                        </div>
-                      </div>
-
-                      <div className="text-center">
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-acencia-orange transition-colors duration-300">
-                          {member.name}
-                        </h3>
-                        <p className="text-slate-300 text-sm mb-3">
-                          {member.position}
-                        </p>
-                        
-                        {/* Platzhalter Kontakt-Info */}
-                        <div className="space-y-1 text-slate-400 text-xs">
-                          <div className="flex items-center justify-center space-x-1">
-                            <Mail className="w-3 h-3" />
-                            <span>email@acencia.de</span>
-                          </div>
-                          <div className="flex items-center justify-center space-x-1">
-                            <Phone className="w-3 h-3" />
-                            <span>+49 XXX XXXXXXX</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="bg-gradient-to-r from-acencia-orange to-orange-600 rounded-2xl p-8 text-center">
+            {/* CTA Section */}
+            <div className="text-center bg-gradient-to-br from-slate-700 to-slate-600 rounded-2xl p-8">
               <h2 className="text-2xl font-bold text-white mb-4">
-                Haben Sie Fragen? Wir sind für Sie da!
+                Bereit für ein Gespräch?
               </h2>
-              <p className="text-white/90 mb-6 leading-relaxed">
-                Unser Service-Team steht Ihnen bei allen Fragen zur betrieblichen Altersvorsorge zur Verfügung. 
-                Kontaktieren Sie uns für eine persönliche Beratung.
+              <p className="text-slate-200 mb-6 max-w-2xl mx-auto">
+                Unser Service-Team steht Ihnen für alle Fragen zur betrieblichen Altersvorsorge zur Verfügung. 
+                Vereinbaren Sie noch heute einen Termin.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-acencia-orange px-8 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-all duration-300 hover:scale-105 shadow-lg">
-                  Team kontaktieren
-                </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300">
-                  Beratungstermin buchen
-                </button>
-              </div>
+              <Button 
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-400 hover:scale-105 shadow-lg"
+                onClick={() => window.open('https://outlook.office365.com/owa/calendar/ACENCIAde@acencia.de/bookings/', '_blank')}
+              >
+                Jetzt Gespräch vereinbaren
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
             </div>
           </div>
-        </div>
+        </section>
+
+        <Footer />
       </main>
-      
-      <Footer />
     </div>
   );
 };
