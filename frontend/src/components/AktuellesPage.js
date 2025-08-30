@@ -116,7 +116,7 @@ const AktuellesPage = () => {
     <div className="min-h-screen bg-acencia">
       <Header />
       
-      <div className="pt-32 bg-acencia">
+      <div className="pt-8 bg-acencia">
         {/* Hero Section mit Hero-Design */}
         <section className="bg-gradient-to-b from-acencia via-acencia to-acencia py-20 relative overflow-hidden">
           {/* Background design similar to hero section */}
