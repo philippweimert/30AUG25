@@ -32,7 +32,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-acencia">
       <Header />
       
-      <div className="pt-32 bg-acencia">
+      <div className="pt-8 bg-acencia">
         {/* Kompakte Hero Section */}
         <section className="bg-gradient-to-b from-acencia via-acencia to-acencia py-16 relative overflow-hidden">
           {/* Geometrische Hintergrundmuster in Weiß */}
