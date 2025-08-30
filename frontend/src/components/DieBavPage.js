@@ -93,8 +93,8 @@ const DieBavPage = () => {
     <div className="min-h-screen bg-acencia">
       <Header />
       
-      {/* Doubled spacing from header to first section */}
-      <div className="pt-32">
+      {/* Normaler Abstand vom Header zur ersten Sektion */}
+      <div className="pt-8">
         <HeroSection />
         <ThreeStepProcessSection />
         
